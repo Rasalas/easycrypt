@@ -2,14 +2,18 @@
 
 include('libs/class.encrypt.php');
 
-$ezcrypt = new SimpleEncrypt('supersicherespasswort', 'salzundpfeffer');
-$data = ['id'=>'12','name'=>'Björn Dør Wilhelm'];
-$crypt = $ezcrypt->encrypt($data,URL_SAFE);
+$ez = new EasyCrypt('supersecurepassphrase', 'saltandpepper');
+
+$data = ['user_id'=>'12','firstname'=>'John', 'lastname'=>'Doe'];
+
+$crypt = $ez->encrypt($data);
+
+
 var_dump($data) ;
 echo '<br>';
-echo $ezcrypt->encrypt($data);
+echo $crypt;
 echo '<br>';
-echo $ezcrypt->encrypt($data,URL_SAFE);
+echo strlen($crypt);
 echo '<br>';
-var_dump($ezcrypt->decrypt($crypt,URL_SAFE));
+var_dump($ez->decrypt($crypt));
 

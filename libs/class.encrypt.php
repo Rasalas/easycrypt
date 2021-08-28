@@ -1,5 +1,4 @@
 <?php
-define('URL_SAFE', true);
 
 class EasyCrypt
 {
@@ -23,17 +22,15 @@ class EasyCrypt
         } else {
             $data_arr = $data;
         }
-
+        
         $data_arr = serialize($this->sign_data($data_arr));
 
-        if ($url_safe) $data_arr = urlencode(base64_encode($data_arr));
         return openssl_encrypt($data_arr, self::ENCRYPTION_ALGORITHM, $this->key);
     }
 
     public function decrypt($string, $url_safe = false)
     {
         $data = openssl_decrypt($string, self::ENCRYPTION_ALGORITHM, $this->key);
-        if ($url_safe) $data = base64_decode(urldecode($data));
 
         $data = unserialize($data);
 
@@ -45,11 +42,10 @@ class EasyCrypt
             }
             return $data;
         }
-
         return false;
     }
 
-    public function sign_data(array $data)
+    private function sign_data(array $data)
     {
         $salted_array = array_merge($data, ['salt' => $this->salt]);
         $signature = md5(serialize($salted_array));
@@ -58,7 +54,7 @@ class EasyCrypt
         return $signed_data;
     }
 
-    public function check_signature(array $data)
+    private function check_signature(array $data)
     {
         $data_signature = $data['signature'];
         unset($data['signature']);
@@ -71,7 +67,7 @@ class EasyCrypt
         return false;
     }
 
-    public function strip_signature(array $data): array
+    private function strip_signature(array $data): array
     {
         unset($data['signature']);
         return $data;
