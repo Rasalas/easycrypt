@@ -50,10 +50,10 @@ class EasyCrypt
      * encrypt data
      *
      * @param  array|String $data
-     * @param  boolean $url_safe use URL_SAFE = true for a String without special chars (longer)
+     * @param  bool $url_safe use URL_SAFE = true for a String without special chars (longer)
      * @return String encrypted string 
      */
-    public function encrypt($data, $url_safe = false)
+    public function encrypt($data, bool $url_safe = false)
     {
         $data_arr = [];
 
@@ -76,10 +76,10 @@ class EasyCrypt
      * decrypt encrypted string
      *
      * @param  String $string
-     * @param  boolean $url_safe use URL_SAFE = true if it was encrypted using URL_SAFE (this is faster but works without it)
+     * @param  bool $url_safe use URL_SAFE = true if it was encrypted using URL_SAFE (this is faster but works without it)
      * @return array|String depending on what type of data it got
      */
-    public function decrypt($string, $url_safe = false)
+    public function decrypt(String $string, bool $url_safe = false)
     {
 
         $data = unserialize(openssl_decrypt($string, self::ENCRYPTION_ALGORITHM, $this->key));
@@ -106,7 +106,7 @@ class EasyCrypt
      * @param  array $data
      * @return array with signature
      */
-    private function sign_data(array $data)
+    private function sign_data(array $data): array
     {
         $salted_array = array_merge($data, ['salt' => $this->salt]);
         $signature = md5(serialize($salted_array));
@@ -119,7 +119,7 @@ class EasyCrypt
      * check_signature checks if the signature is equal to the hash of the array
      *
      * @param  array $data
-     * @return boolean
+     * @return bool
      */
     private function check_signature(array $data): bool
     {
@@ -154,9 +154,9 @@ class EasyCrypt
      *
      * @param  String $string
      * @param  String $delimiter
-     * @return void
+     * @return bool
      */
-    private function surroundedBy($string, $delimiter)
+    private function surroundedBy(String $string,String $delimiter): bool
     {
         return $this->startsWith($string, $delimiter) && $this->endsWith($string, $delimiter);
     }
@@ -166,9 +166,9 @@ class EasyCrypt
      *
      * @param  String $haystack
      * @param  String $needle
-     * @return boolean
+     * @return bool
      */
-    private function startsWith($haystack, $needle)
+    private function startsWith(String $haystack, String $needle): bool
     {
         $length = strlen($needle);
         return substr($haystack, 0, $length) === $needle;
@@ -179,9 +179,9 @@ class EasyCrypt
      *
      * @param  String $haystack
      * @param  String $needle
-     * @return boolean
+     * @return bool
      */
-    private function endsWith($haystack, $needle)
+    private function endsWith(String $haystack, String $needle): bool
     {
         $length = strlen($needle);
         if (!$length) return true;
