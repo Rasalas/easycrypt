@@ -62,7 +62,7 @@ class EasyCrypt
         $data_arr = [];
 
         if (!is_array($data)) {
-            $data_arr[self::DELIMITER . uniqid() . self::DELIMITER] = $data;
+            $data_arr[$this->wrap(uniqid())] = $data;
         } else {
             $data_arr = $data;
         }
@@ -115,7 +115,7 @@ class EasyCrypt
         $salted_array = array_merge($data, ['salt' => $this->salt]);
         $signature = md5(serialize($salted_array));
 
-        $signed_data = array_merge($data, ['signature' => $signature]);
+        $signed_data = array_merge($data, [$this->wrap('signature') => $signature]);
         return $signed_data;
     }
 
@@ -127,10 +127,11 @@ class EasyCrypt
      */
     private function check_signature(array $data): bool
     {
-        if (!isset($data['signature'])) return false;
+        $signature = $this->wrap('signature');
+        if (!isset($data[$signature])) return false;
 
-        $data_signature = $data['signature'];
-        unset($data['signature']);
+        $data_signature = $data[$signature];
+        unset($data[$signature]);
 
         $salted_array = array_merge($data, ['salt' => $this->salt]);
         $temp_signature = md5(serialize($salted_array));
@@ -148,11 +149,21 @@ class EasyCrypt
      */
     private function strip_signature(array $data): array
     {
-        unset($data['signature']);
+        unset($data[$this->wrap('signature')]);
         return $data;
     }
 
     // UTIL    
+    /**
+     * wrap wraps a string inbetween delimiter strings
+     *
+     * @param  String $string
+     * @return String
+     */
+    private function wrap(String $string): String
+    {
+        return self::DELIMITER . $string . self::DELIMITER;
+    }
     /**
      * surroundedBy checks if a string starts and ends with a specific delimiter
      *
