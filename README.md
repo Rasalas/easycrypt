@@ -1,7 +1,7 @@
 # EasyEncrypt
 EasyEncrypt helps to easily encrypt data with a simple passphrase.
 
-## what is it for?
+## What is it for?
 It encrypts array data or strings that you might want to append to your URL as GET data. Or maybe you want to put it in a hidden input. All yours to decide.
 
 If someone tampered with the data, you'll notice, as it's going to return `false` instead of with data (this might change).
@@ -30,7 +30,7 @@ echo '<pre>' . json_encode($decrypted, JSON_PRETTY_PRINT) . '</pre>';
 #### crypt (216 bytes)
 `P9P9WtCGQYQu+Isn7uO0HAMx4Cg+NcFKGmB5Abg4vJD00+PQXmEvHBvycapbOLKZOYnHw0L2Omv/61/6NLWJbQKfjQLXlPykGWiTjwGpz1LD0pZTJla8euIbJHhFiu5RByqeF8Dh40I25Nwh3vGBdIbgffqgT8qIkbIqFQrif8BTzFy1mcLa5so/hWcyUx6T9d8Wrw7l7ifIL2MzReS0hA==`
 
-### output
+### Output
 ```json
 {
     "user_id": "12",
