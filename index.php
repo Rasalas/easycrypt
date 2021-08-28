@@ -22,7 +22,7 @@ function textarea_view($data)
         $rows = count($data) + 2;
     } else {
         $body = $data;
-        $rows = 4;
+        $rows = 6;
     }
 
     echo '<textarea rows=' . $rows . ' style="width:100%">' . $body . '</textarea>';
