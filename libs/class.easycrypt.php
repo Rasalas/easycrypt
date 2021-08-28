@@ -18,7 +18,9 @@ define('URL_SAFE', true);
  * $ez = new Rasalas\Tools\EasyCrypt('supersecurepassphrase', 'saltandpepper');
  * $crypt = $ez->encrypt($data);
  * 
- * echo $ez->decrypt($crypt);
+ * $decrypted $ez->decrypt($crypt);
+ * 
+ * echo '<pre>' . json_encode($decrypted, JSON_PRETTY_PRINT) . '</pre>';
  * 
  * @package EasyCrypt
  * @author  Torben Buck <mail@tbuck.de>
