@@ -1,4 +1,5 @@
 <?php
+define('URL_SAFE', true);
 
 class EasyCrypt
 {
@@ -25,16 +26,24 @@ class EasyCrypt
         
         $data_arr = serialize($this->sign_data($data_arr));
 
-        return openssl_encrypt($data_arr, self::ENCRYPTION_ALGORITHM, $this->key);
+        $encrypted = openssl_encrypt($data_arr, self::ENCRYPTION_ALGORITHM, $this->key);
+
+        if ($url_safe) return rawurlencode(base64_encode($encrypted));
+
+        return $encrypted;
     }
 
     public function decrypt($string, $url_safe = false)
     {
-        $data = openssl_decrypt($string, self::ENCRYPTION_ALGORITHM, $this->key);
-
-        $data = unserialize($data);
-
-        if($this->check_signature($data)){
+                
+        $data = unserialize(openssl_decrypt($string, self::ENCRYPTION_ALGORITHM, $this->key));
+        
+        if(!is_array($data) || $url_safe){
+            $data = base64_decode(rawurldecode($string));
+            $data = unserialize(openssl_decrypt($data, self::ENCRYPTION_ALGORITHM, $this->key));
+        }
+        
+        if(is_array($data) && $this->check_signature($data)){
             $data = $this->strip_signature($data);
             $keys = array_keys($data);
             if(count($data) == 1 && $this->surroundedBy($keys[0],self::DELIMITER)){
@@ -56,6 +65,8 @@ class EasyCrypt
 
     private function check_signature(array $data)
     {
+        if(!isset($data['signature'])) return false;
+
         $data_signature = $data['signature'];
         unset($data['signature']);
 
