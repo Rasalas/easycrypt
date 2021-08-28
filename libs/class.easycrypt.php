@@ -1,4 +1,5 @@
 <?php
+namespace Rasalas\Tools;
 define('URL_SAFE', true);
 
 class EasyCrypt
@@ -42,7 +43,7 @@ class EasyCrypt
             $data = base64_decode(rawurldecode($string));
             $data = unserialize(openssl_decrypt($data, self::ENCRYPTION_ALGORITHM, $this->key));
         }
-        
+
         if(is_array($data) && $this->check_signature($data)){
             $data = $this->strip_signature($data);
             $keys = array_keys($data);

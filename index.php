@@ -2,6 +2,8 @@
 
 include('libs/class.easycrypt.php');
 
+use Rasalas\Tools\EasyCrypt as EasyCrypt;
+
 $ez = new EasyCrypt('supersecurepassphrase', 'saltandpepper');
 
 $data = ['user_id'=>'12','firstname'=>'John', 'lastname'=>'Doe'];
