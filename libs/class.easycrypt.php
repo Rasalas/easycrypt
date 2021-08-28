@@ -13,6 +13,8 @@ define('URL_SAFE', true);
  * Mainly use it for short term use - e.g. to encrypt a user_id in a GET request
  * 
  * Example usage:
+ * include('class.easycrypt.php');
+ * 
  * $data = ['user_id'=>'12','firstname'=>'John', 'lastname'=>'Doe'];
  * 
  * $ez = new Rasalas\Tools\EasyCrypt('supersecurepassphrase', 'saltandpepper');
