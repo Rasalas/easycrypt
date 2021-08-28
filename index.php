@@ -64,17 +64,23 @@ function textarea_view($data)
             margin-bottom: 3rem;
             border-left: 0.3rem solid #18659c;
         }
+
+        small{
+            font-size: 0.8rem;
+            color: #18659c;
+        }
     </style>
     <h3>ORIGINAL DATA</h3>
     <?= textarea_view($data) ?>
     <div class="result">
-        <h3>ENCRYPTED</h3>
+        <h3>ENCRYPTED <small><?= var_export( strlen($crypt))?> bytes</small></h3>
         <?= textarea_view($crypt) ?>
+        
         <h3>DECRYPTED</h3>
         <?= textarea_view($decryped) ?>
     </div>
     <div class="result">
-        <h3>ENCRYPTED (url safe)</h3>
+        <h3>ENCRYPTED (url safe) <small><?= var_export( strlen($crypt_urlsafe))?> bytes</small></h3>
         <?= textarea_view($crypt_urlsafe) ?>
         <h3>DECRYPTED (url safe)</h3>
         <?= textarea_view($decryped_urlsafe) ?>
