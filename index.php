@@ -1,6 +1,6 @@
 <?php
 
-include('libs/class.encrypt.php');
+include('libs/class.easycrypt.php');
 
 $ez = new EasyCrypt('supersecurepassphrase', 'saltandpepper');
 
