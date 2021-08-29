@@ -1,5 +1,5 @@
-# EasyEncrypt
-EasyEncrypt helps to easily encrypt data with a simple passphrase.
+# EasyCrypt
+EasyCrypt helps to easily encrypt data with a simple passphrase.
 
 ## What is it for?
 It encrypts array data or strings that you might want to append to your URL as GET data. Or maybe you want to put it in a hidden input. All yours to decide.
