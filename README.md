@@ -15,7 +15,7 @@ rasa@home:~$ composer require rasalas/easycrypt
 ```php
 <?php
 // import
-include('class.easycrypt.php');
+require __DIR__ . '/vendor/autoload.php'; // or include('vendor/rasalas/easycrypt/src/class.easycrypt.php');
 $ez = new Rasalas\Tools\EasyCrypt('supersecurepassphrase', 'saltandpepper');
 
 // test data
