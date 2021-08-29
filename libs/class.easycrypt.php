@@ -33,7 +33,6 @@ define('URL_SAFE', 1);
 class EasyCrypt
 {
     private const ENCRYPTION_ALGORITHM = 'AES-128-ECB';
-    private const DELIMITER = '----';
     private const KEY_DATA = 'data';
     private const KEY_SIGNATURE = 'signature';
     private const KEY_SALT = 'salt';
@@ -92,10 +91,6 @@ class EasyCrypt
 
         if (is_array($data) && $this->check_signature($data)) {
             $data = $this->strip_signature($data);
-            $keys = array_keys($data);
-            if (count($data) == 1 && $this->surroundedBy($keys[0], self::DELIMITER)) {
-                return $data[$keys[0]];
-            }
             return $data;
         }
         return false;
