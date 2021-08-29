@@ -1,10 +1,8 @@
 <?php
-
 namespace Rasalas\Tools;
 
 define('URL_UNSAFE', 0);
 define('URL_SAFE', 1);
-
 
 /**
  * EasyCrypt_Class is a class to easily encrypt data with a simple passphrase
@@ -148,55 +146,5 @@ class EasyCrypt
     private function strip_signature(array $data): array
     {
         return $data[self::KEY_DATA];
-    }
-
-    // UTIL    
-    /**
-     * wrap wraps a string inbetween delimiter strings
-     *
-     * @param  String $string
-     * @return String
-     */
-    private function wrap(String $string): String
-    {
-        return self::DELIMITER . $string . self::DELIMITER;
-    }
-    /**
-     * surroundedBy checks if a string starts and ends with a specific delimiter
-     *
-     * @param  String $string
-     * @param  String $delimiter
-     * @return bool
-     */
-    private function surroundedBy(String $string, String $delimiter): bool
-    {
-        return $this->startsWith($string, $delimiter) && $this->endsWith($string, $delimiter);
-    }
-
-    /**
-     * startsWith tells if a string starts with a string
-     *
-     * @param  String $haystack
-     * @param  String $needle
-     * @return bool
-     */
-    private function startsWith(String $haystack, String $needle): bool
-    {
-        $length = strlen($needle);
-        return substr($haystack, 0, $length) === $needle;
-    }
-
-    /**
-     * endsWith tells if a string ends with a string
-     *
-     * @param  String $haystack
-     * @param  String $needle
-     * @return bool
-     */
-    private function endsWith(String $haystack, String $needle): bool
-    {
-        $length = strlen($needle);
-        if (!$length) return true;
-        return substr($haystack, -$length) === $needle;
     }
 }
