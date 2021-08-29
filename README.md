@@ -7,7 +7,10 @@ It encrypts array data or strings that you might want to append to your URL as G
 If someone tampered with the data, you'll notice, as it's going to return `false` instead of with data (this might change). That's also what's the `$salt` is for. EasyCrypt signs the data and checks if the data is still unchanged.
 
 Please DO NOT use this to store user data or other sensitive data.
-
+## Installation
+```console
+rasa@home:~$ composer require rasalas/easycrypt
+```
 ## Example usage
 ```php
 <?php
