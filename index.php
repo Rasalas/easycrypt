@@ -33,7 +33,7 @@ function textarea_view($data)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example</title>
+    <title>EasyCrypt Example</title>
 </head>
 
 <body>
@@ -78,7 +78,7 @@ function textarea_view($data)
         <?= textarea_view($decryped) ?>
     </div>
     <div class="result">
-        <h3>ENCRYPTED (url safe) <small><?= var_export( strlen($crypt_urlsafe))?> bytes</small></h3>
+        <h3>ENCRYPTED (url safe) <small><?= var_export( strlen($crypt_urlsafe))?> bytes ( +<?=round(((strlen($crypt_urlsafe)/strlen($crypt))-1)*100,1)?>% )</small></h3>
         <?= textarea_view($crypt_urlsafe) ?>
         <h3>DECRYPTED (url safe)</h3>
         <?= textarea_view($decryped_urlsafe) ?>
