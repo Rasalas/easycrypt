@@ -25,7 +25,7 @@ define('URL_SAFE', 1);
  * echo '<pre>' . json_encode($decrypted, JSON_PRETTY_PRINT) . '</pre>';
  * 
  * @package EasyCrypt
- * @author  Torben Buck <code@tbuck.de>
+ * @author  rasalas <Rasalas@users.noreply.github.com>
  * @version 1.0.0
  * @access  public
  * @see     https://www.tbuck.de/example/easycrypt

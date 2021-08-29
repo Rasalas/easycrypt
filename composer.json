@@ -1,0 +1,19 @@
+{
+    "name": "rasalas/easycrypt",
+    "description": "turns array data or strings in url safe(optional) signed crypt strings and can decrypt them again and make sure it's the same data",
+    "type": "library",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "license": "proprietary",
+    "authors": [{
+        "name": "Torben Buck",
+        "email": "code@tbuck.de"
+    }],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Rasalas\\Tools\\": "src/"
+        }
+    }
+}

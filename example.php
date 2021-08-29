@@ -1,6 +1,6 @@
 <?php
 
-include('libs/class.easycrypt.php');
+include('src/class.easycrypt.php');
 
 use Rasalas\Tools\EasyCrypt as EasyCrypt;
 
