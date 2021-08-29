@@ -16,7 +16,6 @@ $decryped_urlsafe = $ez->decrypt($crypt_urlsafe, URL_SAFE);
 
 function textarea_view($data)
 {
-
     if (is_array($data)) {
         $body = json_encode($data, JSON_PRETTY_PRINT);
         $rows = count($data) + 2;
@@ -24,8 +23,7 @@ function textarea_view($data)
         $body = $data;
         $rows = 6;
     }
-
-    echo '<textarea rows=' . $rows . ' style="width:100%">' . $body . '</textarea>';
+    echo '<textarea rows=' . $rows . ' style="width:100%; background-color:#c6d6e1; border-style:none; resize:vertical; padding:0.5rem;" readonly>' . $body . '</textarea>';
 }
 ?>
 <!DOCTYPE html>
