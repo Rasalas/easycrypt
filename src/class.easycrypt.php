@@ -78,7 +78,7 @@ class EasyCrypt
      *
      * @param  String $string
      * @param  bool $url_safe use URL_SAFE = true if it was encrypted using URL_SAFE (this is faster but works without it)
-     * @return array|String depending on what type of data it got
+     * @return array|String depending on input
      */
     public function decrypt(String $string, bool $url_safe = URL_UNSAFE)
     {
@@ -115,7 +115,7 @@ class EasyCrypt
      * check_signature checks if the signature is equal to the hash of the array
      *
      * @param  array $data
-     * @return bool
+     * @return bool whether the signature is ok or not
      */
     private function check_signature(array $data): bool
     {
@@ -136,9 +136,9 @@ class EasyCrypt
      * strip_signature strips the array of the appended signature
      *
      * @param  array $data
-     * @return array
+     * @return array|String depending on input
      */
-    private function strip_signature(array $data): array
+    private function strip_signature(array $data): mixed
     {
         return $data[self::KEY_DATA];
     }
